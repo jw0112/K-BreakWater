@@ -1,0 +1,63 @@
+{% extends './base.html' %}
+{% load static %}
+
+{% block img-video %}
+
+	<!-- 비디오 -->
+	<span class="cctv">
+		<h3><d>LIVE</d> 하천 인근 CCTV 실시간 모니터링</h3>
+		<video width="320px" height="200px" src={% static "water/images/result_1.mp4" %} autoplay muted preload="auto"></video>
+	</span>
+	<span class="cctv">
+		<h3><d>LIVE</d> 도심 CCTV 실시간 모니터링</h3>
+		<video width="320px" height="200px" src={% static "water/images/city_1.mp4" %} autoplay muted preload="auto"></video>
+	</span>
+
+	<!-- 그래프 -->
+	<!-- python 그래프 시각화 -->
+	<span class="graph">
+		<h3><d>예측</d> 수위</h3>
+		<!-- <img src={% static "water/images/rainfall_0.png" %} width="320" height="200"> -->
+		{% autoescape off %}
+			<div style="width:320;height:200">
+			{{ plot_div }}
+			</div>
+		{% endautoescape %}
+	</span>
+
+	<span class="graph">
+		<h3>하천 <d>면적</d></h3>
+		<img src={% static "water/images/area.png" %} width="320" height="200">
+	</span>
+
+	<span class="system">
+		<h3>인근 경찰 및 소방서</h3>
+		<p><a href="https://www.daejeon.go.kr/dj119/index.do" target="_blank">대전동부소방서 : 042-270-1313</a></p>
+		<p><a href="https://www.djpolice.go.kr/djdb" target="_blank">대전동부경찰서 : 182</a></p>
+	</span>
+
+	<div class="system">
+		<a href="#">
+		<img
+		 src={% static "water/images/message.png" %} 
+		 onmouseenter="zoomIn(event)"
+		 onmouseleave="zoomOut(event)"
+		 width="200"
+		 height="100">
+		</a>
+	</div>
+	<!-- 마우스를 컨트롤했을때 줌인-->
+	<script>
+		function zoomIn(event) {
+		  event.target.style.width = "250px";
+		  event.target.style.height = "150px";
+		  event.target.style.transition = "all 0.5s";
+		}
+	  
+		function zoomOut(event) {
+		  event.target.style.width = "200px";
+		  event.target.style.height = "100px";
+		  event.target.style.transition = "all 0.5s";
+		}
+	</script>
+{% endblock img-video %}

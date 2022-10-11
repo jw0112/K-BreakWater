@@ -1,0 +1,119 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>K-BREAKWATER</title>
+    <meta charset="utf-8" />
+	<!-- css 연결 -->
+    <link href={% static 'water/css/setup.css' %} rel="stylesheet">
+	<!-- 폰트 연결 -->
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap" rel="stylesheet">
+	<!-- 그래프 연결 -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- javascript로 plotly 패키지 연결 -->
+	<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  </head>
+<!-- 전체 base를 만들어준다 -->
+  <body>
+    <div class="navbar">
+	    <a id="logo" href="/water/index/">
+	    	<img src={% static "water/images/klogob.png" %} width="100" height="100">
+	    	<div>K-BREAKWATER</div>
+	    </a>
+
+	    <ul id="menu">
+	      <li><a href="/water/donggu/">동구</a></li>
+	      <li><a href="/water/daedeokgu/">대덕구</a></li>
+	      <li><a href="/water/seogu/">서구</a></li>
+	      <li><a href="/water/yuseonggu/">유성구</a></li>
+	      <li><a href="/water/junggu/">중구</a></li>
+    	</ul>
+    </div>
+
+    <div id="item">
+	<!-- 카카오맵api-->
+		<div id="map" style="width:640px;height:640px;"></div>
+
+		<!-- appkey= 카카오맵에서 받은 api키 입력-->
+		<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=	7e4e4dcea0f7857265f6e2cf4dc6ea57"></script>
+		<script>
+		var mapContainer = document.getElementById('map'), // 지도를 표시할 div  
+			mapOption = { 
+				center: new kakao.maps.LatLng(36.3504119, 127.3845475), // 지도의 중심좌표
+				level: 8 // 지도의 확대 레벨
+			};
+
+		var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+		
+		// 마커를 표시할 위치와 내용을 가지고 있는 객체 배열입니다 
+		var positions = [
+			{
+				content:'<div class	="label">' +
+							'<div>가수원교</div>' +
+							'<div>강수량 : </div>' +
+							'<div>수위 : </div>' +
+						'</div>',
+				latlng: new kakao.maps.LatLng(36.306542, 127.358979)
+			},
+			{
+				content:	'<div>원촌교</div>' +
+							'<div>강수량 : </div>' +
+							'<div>수위 : </div>',  
+				latlng: new kakao.maps.LatLng(36.3784138, 127.4098259)
+			},
+			{
+				content:	'<div>인창교</div>' +
+							'<div>강수량 : </div>' +
+							'<div>수위 : </div>', 
+				latlng: new kakao.maps.LatLng(36.3234161, 127.4344321)
+			}
+		];
+
+		for (var i = 0; i < positions.length; i ++) {
+			// 마커를 생성합니다
+			var marker = new kakao.maps.Marker({
+				map: map, // 마커를 표시할 지도
+				position: positions[i].latlng // 마커의 위치
+			});
+
+			// 마커에 표시할 인포윈도우를 생성합니다
+			var infowindow = new kakao.maps.InfoWindow({
+				position: positions[i].latlng, // 마커의 위치
+				content: positions[i].content // 인포윈도우에 표시할 내용
+			});
+
+			// 마커에 mouseover 이벤트와 mouseout 이벤트를 등록합니다
+			// 이벤트 리스너로는 클로저를 만들어 등록합니다 
+			// for문에서 클로저를 만들어 주지 않으면 마지막 마커에만 이벤트가 등록됩니다
+			kakao.maps.event.addListener(marker, 'mouseover', makeOverListener(map, marker, infowindow));
+			kakao.maps.event.addListener(marker, 'mouseout', makeOutListener(infowindow));
+		}
+
+			// 인포윈도우를 표시하는 클로저를 만드는 함수입니다 
+			function makeOverListener(map, marker, infowindow) {
+				return function() {
+					infowindow.open(map, marker);
+				};
+			}
+
+			// 인포윈도우를 닫는 클로저를 만드는 함수입니다 
+			function makeOutListener(infowindow) {
+				return function() {
+					infowindow.close();
+				};
+			}
+
+		</script>
+
+        {% block img-video %}
+        {% endblock img-video %}
+	</div>
+
+	<!-- 맨 마지막줄 로고 및 사이트 연결 -->
+    <div class="footer">
+      <a href="http://www.hannam.ac.kr" target="_blank"><img src={% static "water/images/hnulogo.png" %} height="30"></a>
+      <a href="https://www.kdata.or.kr" target="_blank"><img src={% static "water/images/kdatalogo.png" %} height="30"></a>
+      <a href="https://www.kwater.or.kr" target="_blank"><img src={% static "water/images/kwaterlogo.png" %} height="45"></a>
+    </div>
+  </body>
+</html>

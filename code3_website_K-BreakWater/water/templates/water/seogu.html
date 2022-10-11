@@ -1,0 +1,34 @@
+{% extends './base.html' %}
+{% load static %}
+
+{% block img-video %}
+	<!-- 비디오 -->
+	<div class="cctv">
+		<h3><d>LIVE</d> 하천 인근 CCTV 실시간 모니터링</h3>
+		<video width="320px" height="200px" src={% static "water/images/result_5.mp4" %} autoplay muted preload="auto"></video>
+	</div>
+	<div class="cctv">
+		<h3><d>LIVE</d> 도심 CCTV 실시간 모니터링</h3>
+		<video width="320px" height="200px" src={% static "water/images/city_3.mp4" %} autoplay muted preload="auto"></video>
+	</div>
+
+	<!-- 그래프 -->
+	<div class="graph">
+		<h3><d>실시간</d> 강수량</h3>
+		<img src={% static "water/images/rainfall_2.png" %} width="320" height="200">
+	</div>
+	<div class="graph">
+		<h3><d>예측</d> 수위</h3>
+		<img src={% static "water/images/waterlevel_2.png" %} width="320" height="200">
+	</div>
+
+	<div class="system">
+		<h3>인근 경찰 및 소방서</h3>
+		<p><a href="https://www.daejeon.go.kr/dj119/index.do" target="_blank">대전서부소방서 : 042-270-1713</a></p>
+		<p><a href="https://www.djpolice.go.kr/djsb" target="_blank">대전서부경찰서 : 182</a></p>
+		<div>{{date}}</div>
+	</div>
+	<div class="system">
+		<a href="#"><img src={% static "water/images/warninglogo.png" %} width="180" height="100"></a>
+	</div>
+{% endblock img-video %}

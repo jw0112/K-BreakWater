@@ -1,0 +1,133 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>K-BREAKWATER</title>
+	<!-- css 연결 -->
+	<link rel="stylesheet" href={% static "water/css/full-page-scroll.css" %}>
+	<!-- 폰트 연결 -->
+	<link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap" rel="stylesheet">
+
+<!-- html은 id, class로 이름을 설정 할 수 있다 -->
+<!-- id, class는 css에서 꾸밀때 용이하다 -->
+
+</head>
+<body>
+	<div id="main" class="scroll-container">
+
+	<!-- section1 -->
+		<section class="section1">
+
+			<div class="navbar">
+				<!-- 로고와 팀이름 -->
+	    		<a id="logo" href= "/water/index/">
+	    			<img src={% static "water/images/klogob.png" %} width="100" height="100">
+	    			<spen>K-BREAKWATER</spen>
+	   			</a>
+				<!-- 메뉴바 설정 -->
+			    <ul id="menu">
+			      <li><a href="/water/donggu/">동구</a></li>
+			      <li><a href="/water/daedeokgu/">대덕구</a></li>
+			      <li><a href="/water/seogu/">서구</a></li>
+			      <li><a href="/water/yuseonggu/">유성구</a></li>
+			      <li><a href="/water/junggu/">중구</a></li>
+		    	</ul>
+    		</div>
+				<!-- 메인 홈페이지 영상 및 글 -->
+    		<div id="platform">
+	    		<h1 id="one">P&M DUAL</h1>
+	    		<h1 id="two">PLATFORM</h1>
+	    		<p class="the">예측과 모니터링을 동시에 하는 침수 경보 시스템을</p>
+	    		<p class="the">구축함으로 스마트시티 안전성을 확보한다</p>
+    		</div>
+
+    		<video preload="auto" autoplay="true" loop="loop" muted="muted" volume="0">
+    			<source src={% static "water/images/backvideo.mp4" %}>
+			</video>
+		</section>
+
+
+	<!-- section2 -->
+		<section class="section2">
+			<div id="icon-list">
+				<!-- 데이터 사용활용 사이트 로고 및 사이트 연결 -->
+				<div class="icon">
+					<img src={% static "water/images/gisang.png" %} width="120" height="120">
+					<h3>기상청</h3>
+					<p>강우량, 날씨 데이터를</p>
+					<p>실시간으로 제공합니다</p>
+					<a href="https://data.kma.go.kr/cmmn/main.do" target="_blank"><img id="down" src={% static "water/images/url.png" %} width="90" height="90"></a>
+				</div>
+				<div class="icon">
+					<img src={% static "water/images/hangang.png" %} width="120" height="120">
+					<h3>한강홍수통제소</h3>
+					<p>댐, 하천, 보의 정보를</p>
+					<p>실시간으로 제공합니다</p>
+					<a href="http://www.hrfco.go.kr/main.do" target="_blank"><img src={% static "water/images/url.png" %} width="90" height="90"></a>
+				</div>
+				<div class="icon">
+					<img src={% static "water/images/cctv.png" %} width="120" height="120">
+					<h3>국토교통정보센터</h3>
+					<p>도로의 cctv를</p>
+					<p>제공합니다</p>
+					<a href="https://www.its.go.kr/opendata/opendataList" target="_blank"><img src={% static "water/images/url.png" %} width="90" height="90"></a>
+				</div>
+				<div class="icon">
+					<img src={% static "water/images/data.png" %} width="120" height="120">
+					<h3>공공데이터포털</h3>
+					<p>태풍, 기상특보 등 데이터를</p>
+					<p>제공 및 활용 가능합니다</p>
+					<a href="https://www.data.go.kr/" target="_blank"><img src={% static "water/images/url.png" %} width="90" height="90"></a>
+				</div>
+			</div>
+		</section>
+	
+	<!-- section3 -->
+		<section class="section3">
+			<div class="food-container">
+				<!-- 서비스가 제공하는 3가지 -->
+				<div id="title">
+					<h1>P&M DUAL SERVICE</h1>
+					<h2>더 안전한 스마트시티를 만듭니다</h2>
+				</div>
+
+				<div class="food">
+					<div class="info">
+						<h3>수위 예측 시스템</h3>
+						<P>#수위  #예측  #강우량  #예보</p>
+					</div>
+					<img src={% static "water/images/예측.png" %} width="300px" height="225px"/>
+				</div>
+				
+				<div class="food">
+					<div class="info">
+						<h3>Water Detection</h3>
+						<P>#물  #탐지  #AI</p>
+					</div>
+					<img src={% static "water/images/물.png" %} width="300px" height="225px"/>
+				</div>
+				
+				<div class="food">
+					<div class="info">
+						<h3>알림 서비스</h3>
+						<P>#위험  #문자  #경보  #카톡</p>
+					</div>
+					<img src={% static "water/images/알림.png" %} width="300px" height="225px"/>
+				</div>
+				<a href="/water/donggu/" id="service"><h1>서비스 바로가기</h1><a>
+			</div>
+		</section>
+
+	</div>
+	<!-- javascript로 화면 스크롤 만들어주기 -->
+	<script src={% static "water/js/full-page-scroll.js" %}></script>
+	<script type="text/javascript">
+		new fullScroll({
+			displayDots: true,
+			dotsPosition: 'left',
+			animateTime: 0.7,
+			animateFunction: 'ease'
+		});
+	</script>
+</body>
+</html>

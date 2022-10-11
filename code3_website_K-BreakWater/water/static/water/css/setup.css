@@ -1,0 +1,115 @@
+/*전체 적용 부분*/
+* {
+  box-sizing: border-box;
+  font-family: 'Nanum Gothic', sans-serif;
+  font-size: 18;
+  color: black;
+}
+
+
+body {
+  margin: 0;
+  min-width: 992px;
+  width: 1440px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+/* navbar */
+/* 메뉴바 위치 및 크기 설정 */
+
+.navbar {
+  height: 100px;
+  padding-left: 30px;
+  padding-right: 30px;
+  background-color: white;
+}
+
+#logo {
+  line-height: 100px;
+  text-decoration: none;
+  width: 400px;
+  float: left;
+  vertical-align: middle;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+#logo img {
+  float: left;
+}
+
+#menu {
+  list-style: none;
+  float: right;
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  padding-left: 10px;
+  padding-right: 10px;
+  line-height: 100px;
+  text-decoration: none;
+  display: block;
+}
+
+li a:hover {
+  font-size: 17;
+  color: #A9A9A9;
+}
+
+
+
+
+
+/*item*/
+/* 화면 구성에 있어 지도와 영상 그래프를 grid를 통해 공간을 내어 위치 설정 */
+#item {
+  margin-left: 40px;
+  margin-right: 40px;
+  display: grid;
+  grid-template-columns: 640px 325px 325px;
+  grid-template-rows: 265px 265px 150px;
+  gap: 20px 30px;
+}
+
+#map {
+  margin-right: 10px;
+  padding: 0px;
+  grid-row: 1/4;
+}
+
+d {
+  color: red;
+}
+
+.system a {
+  text-decoration: none;
+}
+
+.system {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 0px;
+}
+
+.system img {
+  margin-top: 10px;
+}
+
+/* footer */
+.footer {
+  text-align: center;
+  margin-top: 80px;
+  margin-bottom: 100px;
+}
+
+.footer a {
+  margin-left: 10px;
+  margin-right: 10px;
+}
